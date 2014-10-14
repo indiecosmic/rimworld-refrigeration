@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+  <ThingDef Name="BuildingBase" Abstract="True">
+    <category>Building</category>
+    <soundImpactDefault>BulletImpactMetal</soundImpactDefault>
+    <selectable>true</selectable>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <repairEffect>Repair</repairEffect>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>Refrigerator</defName>
+    <eType>BuildingComplex</eType>
+    <label>refrigerator</label>
+    <thingClass>Refrigeration.Building_Refrigerator</thingClass>
+    <graphicPathSingle>Things/Building/Production/Refrigerator</graphicPathSingle>
+    <overdraw>true</overdraw>
+    <altitudeLayer>Waist</altitudeLayer>
+    <passability>Impassable</passability>
+    <castEdgeShadows>true</castEdgeShadows>
+    <statBases>
+      <MaxHealth>200</MaxHealth>
+      <WorkToBuild>580</WorkToBuild>
+      <Flammability>1.0</Flammability>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <description>Haulers carry food here for storage.</description>
+    <size>(2,1)</size>
+    <costList>
+      <Metal>120</Metal>
+    </costList>
+    <killedLeavings>
+      <ChunkSlag>2</ChunkSlag>
+    </killedLeavings>
+    <filthLeavings>
+      <SlagRubble>2</SlagRubble>
+    </filthLeavings>
+    <building>
+      <fixedStorageSettings>
+        <priority>Important</priority>
+        <allowances>
+          <categories>
+            <li>FoodMeals</li>
+          </categories>
+        </allowances>
+      </fixedStorageSettings>
+    </building>
+    <inspectorTabs>
+      <li>ITab_Storage</li>
+    </inspectorTabs>
+    <designationCategory>Production</designationCategory>
+    <staticSunShadowHeight>0.5</staticSunShadowHeight>
+    <itemSurface>true</itemSurface>
+  </ThingDef>
+
+</ThingDefs>

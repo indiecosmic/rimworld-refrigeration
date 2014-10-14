@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Refrigeration</name>
+  <author>IndieCosmic</author>
+  <targetVersion>Alpha 7</targetVersion>
+  <description>
+    This is a test to build a refrigerator.
+  </description>
+</ModMetaData>
