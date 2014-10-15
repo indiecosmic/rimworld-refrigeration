@@ -50,7 +50,7 @@
     <inspectorTabs>
       <li>ITab_Storage</li>
     </inspectorTabs>
-    <designationCategory>Production</designationCategory>
+    <designationCategory>Furniture</designationCategory>
     <comps>
       <li>
         <compClass>CompPowerTrader</compClass>
@@ -58,6 +58,7 @@
         <basePowerConsumption>200</basePowerConsumption>
       </li>
     </comps>
+    <researchPrerequisite>Refrigeration</researchPrerequisite>
     <staticSunShadowHeight>0.5</staticSunShadowHeight>
     <itemSurface>true</itemSurface>
     <spoilAgeFactor>3.5</spoilAgeFactor>

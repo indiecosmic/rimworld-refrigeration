@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResearchProjectDefs>
+
+	<ResearchProjectDef>
+		<defName>Refrigeration</defName>
+		<label>refrigeration</label>
+		<description>Allows you to build refrigerators to extend the lifetime of food.</description>
+		<totalCost>700</totalCost>
+	</ResearchProjectDef>
+	
+</ResearchProjectDefs>
