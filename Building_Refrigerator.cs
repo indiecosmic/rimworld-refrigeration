@@ -66,22 +66,12 @@ namespace IndieSoft.RimWorld.Refrigeration
                     int index = frozenThings.IndexOf(meal);
                     if (meal.stackCount != stackSizes[index])
                     {
-                        // Räkna baklänges vilken age den tillagda maten hade.
                         int diff = meal.stackCount - stackSizes[index];
                         float t = (diff / (float)meal.stackCount);
                         int lerp = meal.GetAge();
                         int from = ages[index];
 
                         int originalAge = Mathf.RoundToInt(((lerp - from) + (t * from)) / t);
-
-                        //Log.Message("Food in container was: " + from);
-                        //Log.Message("Added food was: " + originalAge);
-                        //Log.Message("Combined food is now: " + lerp);
-                        
-                        
-                        //int newAge = originalAge - meal.def.food.ticksBeforeSpoil;
-                        //Log.Message("Is added food was frozen it should be: " + newAge);
-                        //Log.Message("Combined food should then be: " + Mathf.RoundToInt(Mathf.Lerp((float)from, (float)newAge, t)));
 
                         Freeze(meal, from, originalAge, t);
                     }
@@ -95,18 +85,21 @@ namespace IndieSoft.RimWorld.Refrigeration
         private void Freeze(Meal meal)
         {
             int age = meal.GetAge();
-            meal.SetAge(age - meal.def.food.ticksBeforeSpoil);
+            float spoilFactor = ((ThingDef_Refrigerator)this.def).spoilAgeFactor;
+            meal.SetAge(age - Mathf.RoundToInt((spoilFactor * meal.def.food.ticksBeforeSpoil)));
         }
 
         private void Freeze(Meal meal, int from, int unfrozenAge, float t)
         {
-            meal.SetAge(Mathf.RoundToInt(Mathf.Lerp((float)from, (float)(unfrozenAge - meal.def.food.ticksBeforeSpoil), t)));
+            float spoilFactor = ((ThingDef_Refrigerator)this.def).spoilAgeFactor;
+            meal.SetAge(Mathf.RoundToInt(Mathf.Lerp((float)from, (float)(unfrozenAge - Mathf.RoundToInt(spoilFactor * meal.def.food.ticksBeforeSpoil)), t)));
         }
 
         private void Thaw(Meal meal)
         {
             int age = meal.GetAge();
-            age += meal.def.food.ticksBeforeSpoil;
+            float spoilFactor = ((ThingDef_Refrigerator)this.def).spoilAgeFactor;
+            age += Mathf.RoundToInt(spoilFactor * meal.def.food.ticksBeforeSpoil);
 
             if (age >= meal.def.food.ticksBeforeSpoil)
             {

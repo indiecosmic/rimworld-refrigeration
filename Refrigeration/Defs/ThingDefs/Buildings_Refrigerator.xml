@@ -10,7 +10,7 @@
     <repairEffect>Repair</repairEffect>
   </ThingDef>
 
-  <ThingDef ParentName="BuildingBase">
+  <ThingDef Class="IndieSoft.RimWorld.Refrigeration.ThingDef_Refrigerator" ParentName="BuildingBase">
     <defName>Refrigerator</defName>
     <eType>BuildingComplex</eType>
     <label>refrigerator</label>
@@ -53,6 +53,7 @@
     <designationCategory>Production</designationCategory>
     <staticSunShadowHeight>0.5</staticSunShadowHeight>
     <itemSurface>true</itemSurface>
+    <spoilAgeFactor>3</spoilAgeFactor>
   </ThingDef>
 
 </ThingDefs>
