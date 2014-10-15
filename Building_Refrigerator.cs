@@ -15,6 +15,24 @@ namespace IndieSoft.RimWorld.Refrigeration
         private List<int> stackSizes = new List<int>();
         private List<int> ages = new List<int>();
 
+        public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
+        {
+            foreach (Thing thing in GetSlotGroup().HeldThings)
+            {
+                if (thing is Meal)
+                {
+                    Meal meal = (Meal)thing;
+                    if (frozenThings.Contains(meal))
+                    {
+                        Thaw(meal);
+                        frozenThings.Remove(meal);
+                    }
+                }
+            }
+
+            base.Destroy(mode);
+        }
+
         public override void Notify_LostThing(Thing newItem)
         {
             base.Notify_LostThing(newItem);
