@@ -21,6 +21,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThingDefs", "ThingDefs", "{
 		Refrigeration\Defs\ThingDefs\Buildings_Refrigerator.xml = Refrigeration\Defs\ThingDefs\Buildings_Refrigerator.xml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ResearchProjectDefs", "ResearchProjectDefs", "{DE877229-B021-47E6-AE5A-10E9F2E5BDD8}"
+	ProjectSection(SolutionItems) = preProject
+		Refrigeration\Defs\ResearchProjectDefs\RefrigerationResearch.xml = Refrigeration\Defs\ResearchProjectDefs\RefrigerationResearch.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,5 +45,6 @@ Global
 		{A73D5408-32B0-4793-9CFA-5031884B3362} = {58C220A1-B59B-43A5-BDC8-8FE4FF820AE7}
 		{819B011D-E57F-4E5C-A87D-1D7FB2483B8E} = {58C220A1-B59B-43A5-BDC8-8FE4FF820AE7}
 		{3A3CFF0E-8239-4050-BE04-B691DB74816F} = {819B011D-E57F-4E5C-A87D-1D7FB2483B8E}
+		{DE877229-B021-47E6-AE5A-10E9F2E5BDD8} = {819B011D-E57F-4E5C-A87D-1D7FB2483B8E}
 	EndGlobalSection
 EndGlobal

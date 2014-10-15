@@ -6,10 +6,10 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Refrigeration")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("RimWorld Refrigeration Mod")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Refrigeration")]
+[assembly: AssemblyProduct("RimWorld Refrigeration Mod")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

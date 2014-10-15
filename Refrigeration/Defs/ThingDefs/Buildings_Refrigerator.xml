@@ -26,7 +26,7 @@
       <Flammability>1.0</Flammability>
     </statBases>
     <tickerType>Normal</tickerType>
-    <description>Haulers carry food here for long time storage.</description>
+    <description>Provides long time storage for food.</description>
     <size>(2,1)</size>
     <costList>
       <Metal>120</Metal>
