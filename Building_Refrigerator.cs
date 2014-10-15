@@ -14,6 +14,15 @@ namespace IndieSoft.RimWorld.Refrigeration
         private List<Thing> frozenThings = new List<Thing>();
         private List<int> stackSizes = new List<int>();
         private List<int> ages = new List<int>();
+        private CompPowerTrader powerComp;
+
+        public bool IsOn
+        {
+            get
+            {
+                return this.powerComp != null && this.powerComp.PowerOn;
+            }
+        }
 
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {
@@ -37,7 +46,7 @@ namespace IndieSoft.RimWorld.Refrigeration
         {
             base.Notify_LostThing(newItem);
 
-            if (newItem is Meal)
+            if (newItem is Meal && frozenThings.Contains(newItem))
             {
                 Thaw((Meal)newItem);
                 int index = frozenThings.IndexOf(newItem);
@@ -56,28 +65,42 @@ namespace IndieSoft.RimWorld.Refrigeration
                 if (thing is Meal)
                 {
                     Meal meal = (Meal)thing;
-                    if (!frozenThings.Contains(meal))
+                    if (this.IsOn)
                     {
-                        Freeze(meal);
-                        frozenThings.Add(meal);
-                        stackSizes.Add(meal.stackCount);
-                        ages.Add(meal.GetAge());
+                        if (!frozenThings.Contains(meal))
+                        {
+                            Freeze(meal);
+                            frozenThings.Add(meal);
+                            stackSizes.Add(meal.stackCount);
+                            ages.Add(meal.GetAge());
+                        }
+                        int index = frozenThings.IndexOf(meal);
+                        if (meal.stackCount != stackSizes[index])
+                        {
+                            int diff = meal.stackCount - stackSizes[index];
+                            float t = (diff / (float)meal.stackCount);
+                            int lerp = meal.GetAge();
+                            int from = ages[index];
+
+                            int originalAge = Mathf.RoundToInt(((lerp - from) + (t * from)) / t);
+
+                            Freeze(meal, from, originalAge, t);
+                        }
+
+                        stackSizes[index] = meal.stackCount;
+                        ages[index] = meal.GetAge();
                     }
-                    int index = frozenThings.IndexOf(meal);
-                    if (meal.stackCount != stackSizes[index])
+                    else
                     {
-                        int diff = meal.stackCount - stackSizes[index];
-                        float t = (diff / (float)meal.stackCount);
-                        int lerp = meal.GetAge();
-                        int from = ages[index];
-
-                        int originalAge = Mathf.RoundToInt(((lerp - from) + (t * from)) / t);
-
-                        Freeze(meal, from, originalAge, t);
+                        if (frozenThings.Contains(meal))
+                        {
+                            Thaw(meal);
+                            int index = frozenThings.IndexOf(meal);
+                            frozenThings.Remove(meal);
+                            stackSizes.RemoveAt(index);
+                            ages.RemoveAt(index);
+                        }
                     }
-
-                    stackSizes[index] = meal.stackCount;
-                    ages[index] = meal.GetAge();
                 }
             }
         }
@@ -86,27 +109,33 @@ namespace IndieSoft.RimWorld.Refrigeration
         {
             int age = meal.GetAge();
             float spoilFactor = ((ThingDef_Refrigerator)this.def).spoilAgeFactor;
-            meal.SetAge(age - Mathf.RoundToInt((spoilFactor * meal.def.food.ticksBeforeSpoil)));
+            meal.SetAge(age - Mathf.RoundToInt((spoilFactor * meal.def.food.ticksBeforeSpoil - meal.def.food.ticksBeforeSpoil)));
         }
 
         private void Freeze(Meal meal, int from, int unfrozenAge, float t)
         {
             float spoilFactor = ((ThingDef_Refrigerator)this.def).spoilAgeFactor;
-            meal.SetAge(Mathf.RoundToInt(Mathf.Lerp((float)from, (float)(unfrozenAge - Mathf.RoundToInt(spoilFactor * meal.def.food.ticksBeforeSpoil)), t)));
+            meal.SetAge(Mathf.RoundToInt(Mathf.Lerp((float)from, (float)(unfrozenAge - Mathf.RoundToInt(spoilFactor * meal.def.food.ticksBeforeSpoil - meal.def.food.ticksBeforeSpoil)), t)));
         }
 
         private void Thaw(Meal meal)
         {
             int age = meal.GetAge();
             float spoilFactor = ((ThingDef_Refrigerator)this.def).spoilAgeFactor;
-            age += Mathf.RoundToInt(spoilFactor * meal.def.food.ticksBeforeSpoil);
+            age += Mathf.RoundToInt(spoilFactor * meal.def.food.ticksBeforeSpoil - meal.def.food.ticksBeforeSpoil);
 
             if (age >= meal.def.food.ticksBeforeSpoil)
             {
-                age = meal.def.food.ticksBeforeSpoil / 10;
+                age = meal.def.food.ticksBeforeSpoil - (meal.def.food.ticksBeforeSpoil / 10);
             }
 
             meal.SetAge(age);
+        }
+
+        public override void SpawnSetup()
+        {
+            base.SpawnSetup();
+            this.powerComp = base.GetComp<CompPowerTrader>();
         }
     }
 }

@@ -26,7 +26,7 @@
       <Flammability>1.0</Flammability>
     </statBases>
     <tickerType>Normal</tickerType>
-    <description>Haulers carry food here for storage.</description>
+    <description>Haulers carry food here for long time storage.</description>
     <size>(2,1)</size>
     <costList>
       <Metal>120</Metal>
@@ -51,9 +51,16 @@
       <li>ITab_Storage</li>
     </inspectorTabs>
     <designationCategory>Production</designationCategory>
+    <comps>
+      <li>
+        <compClass>CompPowerTrader</compClass>
+        <startElectricalFires>true</startElectricalFires>
+        <basePowerConsumption>200</basePowerConsumption>
+      </li>
+    </comps>
     <staticSunShadowHeight>0.5</staticSunShadowHeight>
     <itemSurface>true</itemSurface>
-    <spoilAgeFactor>3</spoilAgeFactor>
+    <spoilAgeFactor>3.5</spoilAgeFactor>
   </ThingDef>
 
 </ThingDefs>
