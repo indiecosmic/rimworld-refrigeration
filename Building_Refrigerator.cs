@@ -7,7 +7,7 @@ using System.Text;
 using UnityEngine;
 using Verse;
 
-namespace Refrigeration
+namespace IndieSoft.RimWorld.Refrigeration
 {
     public class Building_Refrigerator : Building_Storage, SlotGroupParent
     {

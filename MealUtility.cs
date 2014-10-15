@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Refrigeration
+namespace IndieSoft.RimWorld.Refrigeration
 {
     public static class MealUtility
     {

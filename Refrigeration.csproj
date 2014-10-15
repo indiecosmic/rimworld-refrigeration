@@ -7,7 +7,7 @@
     <ProjectGuid>{1F47F5AF-98B2-4E99-B909-89E5D0F417CC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Refrigeration</RootNamespace>
+    <RootNamespace>IndieSoft.RimWorld.Refrigeration</RootNamespace>
     <AssemblyName>Refrigeration</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

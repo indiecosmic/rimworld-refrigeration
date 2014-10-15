@@ -14,7 +14,7 @@
     <defName>Refrigerator</defName>
     <eType>BuildingComplex</eType>
     <label>refrigerator</label>
-    <thingClass>Refrigeration.Building_Refrigerator</thingClass>
+    <thingClass>IndieSoft.RimWorld.Refrigeration.Building_Refrigerator</thingClass>
     <graphicPathSingle>Things/Building/Production/Refrigerator</graphicPathSingle>
     <overdraw>true</overdraw>
     <altitudeLayer>Waist</altitudeLayer>
