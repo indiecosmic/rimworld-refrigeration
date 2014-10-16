@@ -84,7 +84,7 @@ namespace IndieSoft.RimWorld.Refrigeration
 
                             int originalAge = Mathf.RoundToInt(((lerp - from) + (t * from)) / t);
 
-                            Freeze(meal, from, originalAge, t);
+                            FreezeAbsorbedStack(meal, from, originalAge, t);
                         }
 
                         stackSizes[index] = meal.stackCount;
@@ -108,28 +108,45 @@ namespace IndieSoft.RimWorld.Refrigeration
         private void Freeze(Meal meal)
         {
             int age = meal.GetAge();
-            float spoilFactor = ((ThingDef_Refrigerator)this.def).spoilAgeFactor;
-            meal.SetAge(age - Mathf.RoundToInt((spoilFactor * meal.def.food.ticksBeforeSpoil - meal.def.food.ticksBeforeSpoil)));
+            float multiplier = ((ThingDef_Refrigerator)this.def).spoilAgeFactor;
+            int maxAge = meal.def.food.ticksBeforeSpoil;
+            int newMaxAge = Mathf.RoundToInt(multiplier * maxAge);
+
+            int result = CalcAge(maxAge, newMaxAge, age);
+            meal.SetAge(result);
         }
 
-        private void Freeze(Meal meal, int from, int unfrozenAge, float t)
+        private void FreezeAbsorbedStack(Meal meal, int from, int ageOfAddedMeal, float t)
         {
-            float spoilFactor = ((ThingDef_Refrigerator)this.def).spoilAgeFactor;
-            meal.SetAge(Mathf.RoundToInt(Mathf.Lerp((float)from, (float)(unfrozenAge - Mathf.RoundToInt(spoilFactor * meal.def.food.ticksBeforeSpoil - meal.def.food.ticksBeforeSpoil)), t)));
+            float multiplier = ((ThingDef_Refrigerator)this.def).spoilAgeFactor;
+            int maxAge = meal.def.food.ticksBeforeSpoil;
+            int newMaxAge = Mathf.RoundToInt(multiplier * maxAge);
+
+            int addedMealFrozen = CalcAge(maxAge, newMaxAge, ageOfAddedMeal);
+
+            int result = Mathf.RoundToInt(Mathf.Lerp((float)from, (float)addedMealFrozen, t));
+            meal.SetAge(result);
+        }
+
+        private int CalcAge(int maxAge, int newMaxAge, int currentAge)
+        {
+            return maxAge - (newMaxAge - Mathf.RoundToInt((currentAge / (float)maxAge) * newMaxAge));
+        }
+
+        private int CalcAgeReversed(int maxAge, int newMaxAge, int currentAge)
+        {
+            return maxAge + Mathf.RoundToInt(((currentAge - maxAge) / (float)newMaxAge) * maxAge);
         }
 
         private void Thaw(Meal meal)
         {
             int age = meal.GetAge();
-            float spoilFactor = ((ThingDef_Refrigerator)this.def).spoilAgeFactor;
-            age += Mathf.RoundToInt(spoilFactor * meal.def.food.ticksBeforeSpoil - meal.def.food.ticksBeforeSpoil);
+            float multiplier = ((ThingDef_Refrigerator)this.def).spoilAgeFactor;
+            int maxAge = meal.def.food.ticksBeforeSpoil;
+            int newMaxAge = Mathf.RoundToInt(multiplier * maxAge);
 
-            if (age >= meal.def.food.ticksBeforeSpoil)
-            {
-                age = meal.def.food.ticksBeforeSpoil - (meal.def.food.ticksBeforeSpoil / 10);
-            }
-
-            meal.SetAge(age);
+            int result = CalcAgeReversed(maxAge, newMaxAge, age);
+            meal.SetAge(result);
         }
 
         public override void SpawnSetup()
