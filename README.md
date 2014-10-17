@@ -6,6 +6,8 @@ It adds a refrigerator to the game (along with a research project) which extends
 
 The refrigerator works as an ordinary storage spot, which lets colonists to place and take away meals without any extra player action required.
 
+![Screenshot](https://cloud.githubusercontent.com/assets/1156633/4654449/4a7fb728-54b7-11e4-969f-04db7ffb08c8.png)
+
 ## How to install
 - Unzip the contents and place them in your RimWorld/Mods folder.
 - Activate the mod in the mod menu in the game.
