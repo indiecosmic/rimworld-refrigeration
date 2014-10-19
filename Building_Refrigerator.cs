@@ -108,7 +108,8 @@ namespace IndieSoft.RimWorld.Refrigeration
         public override void SpawnSetup()
         {
             base.SpawnSetup();
-            this.powerComp = base.GetComp<CompPowerTrader>();
+
+            this.powerComp = base.GetComp<CompTemperatureBasedPowerTrader>();
 
             if (frozenThings.Count != ages.Count || frozenThings.Count != stackSizes.Count)
             {

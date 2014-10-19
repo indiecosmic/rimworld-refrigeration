@@ -53,7 +53,7 @@
     <designationCategory>Furniture</designationCategory>
     <comps>
       <li>
-        <compClass>CompPowerTrader</compClass>
+        <compClass>IndieSoft.RimWorld.Refrigeration.CompTemperatureBasedPowerTrader</compClass>
         <startElectricalFires>true</startElectricalFires>
         <basePowerConsumption>200</basePowerConsumption>
       </li>

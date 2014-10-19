@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Building_Refrigerator.cs" />
+    <Compile Include="CompTemperatureBasedPowerTrader.cs" />
     <Compile Include="MealUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThingDef_Refrigerator.cs" />
