@@ -20,6 +20,9 @@ The refrigerator works as an ordinary storage spot, which lets colonists to plac
 This is my first real attempt at a RimWorld mod for use by other players. Feel free to post opinions, ideas, bug reports, etc in the [Issues](https://github.com/indiecosmic/rimworld-refrigeration/issues) section.
 
 ## Changelog
+######Version 1.0.2 (2014-10-19)
+- Added temperature based power consumtion, which increases refrigerator's the power needed in warm maps, and decreases power needed in cold maps.
+- Updated refrigerator texture to better match the vanilla furniture.
 ######Version 1.0.1 (2014-10-16)
 - Added saving and loading and saving of refrigerator state.
 - Balanced the multiplier for stored meals.
