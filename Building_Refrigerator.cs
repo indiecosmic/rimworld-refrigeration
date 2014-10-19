@@ -107,7 +107,6 @@ namespace IndieSoft.RimWorld.Refrigeration
 
         public override void SpawnSetup()
         {
-            Log.Message("SpawnSetup");
             base.SpawnSetup();
             this.powerComp = base.GetComp<CompPowerTrader>();
 
