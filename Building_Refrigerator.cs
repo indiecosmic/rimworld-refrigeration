@@ -109,7 +109,11 @@ namespace IndieSoft.RimWorld.Refrigeration
         {
             base.SpawnSetup();
 
-            this.powerComp = base.GetComp<CompTemperatureBasedPowerTrader>();
+            this.powerComp = base.GetComp<CompPowerTrader>();
+            if (this.powerComp != null)
+            {
+                this.powerComp.powerOutput = GetTemperatureAdjustedPowerOutput(this.powerComp.powerOutput);
+            }
 
             if (frozenThings.Count != ages.Count || frozenThings.Count != stackSizes.Count)
             {
@@ -174,6 +178,20 @@ namespace IndieSoft.RimWorld.Refrigeration
 
             int result = CalcAgeReversed(maxAge, newMaxAge, age);
             meal.SetAge(result);
+        }
+
+        private float GetTemperatureAdjustedPowerOutput(float powerOutput)
+        {
+            float temperature = Find.Map.WorldSquare.temperature;
+            if (temperature >= 30f)
+                powerOutput *= 2f;
+            else if (temperature >= 20f)
+                powerOutput *= 1.5f;
+            else if (temperature <= 0f)
+                powerOutput *= 0.75f;
+            else if (temperature <= -10f)
+                powerOutput *= 0.5f;
+            return powerOutput;
         }
     }
 }
