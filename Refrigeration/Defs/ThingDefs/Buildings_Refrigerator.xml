@@ -57,6 +57,11 @@
         <startElectricalFires>true</startElectricalFires>
         <basePowerConsumption>200</basePowerConsumption>
       </li>
+      <li>
+        <compClass>CompGlower</compClass>
+        <glowRadius>3</glowRadius>
+        <glowColor>(178,218,111,0)</glowColor>
+      </li>
     </comps>
     <researchPrerequisite>Refrigeration</researchPrerequisite>
     <staticSunShadowHeight>0.5</staticSunShadowHeight>
