@@ -20,6 +20,9 @@ The refrigerator works as an ordinary storage spot, which lets colonists to plac
 This is my first real attempt at a RimWorld mod for use by other players. Feel free to post opinions, ideas, bug reports, etc in the [Issues](https://github.com/indiecosmic/rimworld-refrigeration/issues) section.
 
 ## Changelog
+######Version 1.0.4 (2014-10-31)
+- Added a glowing light effect to the refrigerator.
+
 ######Version 1.0.3 (2014-10-21)
 - Fixed a bug which prevented the refrigerator to be connected to the power grid.
 
