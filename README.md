@@ -22,9 +22,11 @@ This is my first real attempt at a RimWorld mod for use by other players. Feel f
 ## Changelog
 ######Version 1.0.3 (2014-10-21)
 - Fixed a bug which prevented the refrigerator to be connected to the power grid.
+
 ######Version 1.0.2 (2014-10-19)
 - Added temperature based power consumtion, which increases refrigerator's the power needed in warm maps, and decreases power needed in cold maps.
 - Updated refrigerator texture to better match the vanilla furniture.
+
 ######Version 1.0.1 (2014-10-16)
 - Added saving and loading and saving of refrigerator state.
 - Balanced the multiplier for stored meals.
