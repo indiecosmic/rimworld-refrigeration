@@ -19,7 +19,7 @@ The refrigerator works as an ordinary storage spot, which lets colonists to plac
 - Build a refrigerator and make sure it has got power.
 
 ## Notes
-This is my first real attempt at a RimWorld mod for use by other players. Feel free to post opinions, ideas, bug reports, etc in the [Issues](https://github.com/indiecosmic/rimworld-refrigeration/issues) section.
+This was my first real attempt at a RimWorld mod for use by other players.
 
 ## Changelog
 ###### Version 1.0.4 (2014-10-31)
